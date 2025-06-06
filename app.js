@@ -29,7 +29,8 @@ function generateRandom() {
   else if (currentMode === "4") max = 50; //difícil
   else max = 20;
 
-  while (!isInteger) { //gera números aleatórios enquanto o teste isInteger for falso
+  while (!isInteger) {
+    //gera números aleatórios enquanto o teste isInteger for falso
     num1.innerText = parseInt(Math.random() * max);
     num2.innerText = parseInt(Math.random() * max);
     num3.innerText = parseInt(Math.random() * max);
@@ -99,7 +100,6 @@ function trocarModo(novoModo, botaoClicado) {
 
   // Remove o destaque de todos os botões
   document.querySelectorAll(".gameModeOption").forEach((btn) => {
-    btn.style.borderLeft = "none";
     btn.style.backgroundColor = ""; // ou cor padrão
   });
 
@@ -110,13 +110,15 @@ function trocarModo(novoModo, botaoClicado) {
   // Gera nova sequência ao trocar o modo
   generateRandom();
 
-  // Fecha o modal do modo de jogo, se estiver aberto
-  const gameModeCard = document.querySelector(".gameMode-card");
-  if (gameModeCard) {
-    gameModeCard.style.display = "none";
-  }
-  if (typeof coverAll !== "undefined" && coverAll) {
-    coverAll.style.display = "none";
+  if (checkDevice()) {
+    // Fecha o modal do modo de jogo, se estiver aberto
+    const gameModeCard = document.querySelector(".gameMode-card");
+    if (gameModeCard) {
+      gameModeCard.style.display = "none";
+    }
+    if (typeof coverAll !== "undefined" && coverAll) {
+      coverAll.style.display = "none";
+    }
   }
 }
 
